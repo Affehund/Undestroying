@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "id": "undestroying",
+  "version": "${version}",
+
+  "name": "Undestroying (Fabric)",
+  "description": "Annoyed by loosing your stuff?",
+  "authors": [
+    "Affehund"
+  ],
+  "contact": {
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/undestroying-fabric",
+    "sources": "https://github.com/affehund/Undestroying/",
+    "issues": "https://github.com/affehund/Undestroying/issues"
+  },
+
+  "license": "GNU GPLv3",
+  "icon": "logo.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.affehund.undestroying.UndestroyingFabric"
+    ],
+    "client": [
+    ]
+  },
+  
+  "mixins": [
+  	"undestroying.mixins.json"
+  ],
+  
+  "depends": {
+    "fabricloader": ">=0.7.4",
+    "fabric": "*",
+    "minecraft": ">=1.16.2"
+  }
+}

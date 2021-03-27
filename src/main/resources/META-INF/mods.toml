@@ -1,0 +1,14 @@
+modLoader="javafml" #mandatory
+loaderVersion="[36,)" #mandatory
+
+license="GNU GPLv3"
+issueTrackerURL="https://github.com/Affehund/Undestroying/issues" #optional
+displayURL="https://www.curseforge.com/minecraft/mc-mods/undestroying" #optional
+logoFile="logo.png" #optional
+authors="Affehund" #optional
+[[mods]] #mandatory
+    modId="undestroying" #mandatory
+    version="${file.jarVersion}" #mandatory
+    displayName="Undestroying" #mandatory
+    updateJSONURL="https://raw.githubusercontent.com/Affehund/Undestroying/main/update.json" #optional
+    description='''Annoyed by loosing your stuff?'''

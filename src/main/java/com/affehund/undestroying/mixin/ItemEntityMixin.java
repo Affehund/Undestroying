@@ -27,6 +27,8 @@ public class ItemEntityMixin {
 			if (EnchantmentHelper.getEnchantments(this.getItem())
 					.containsKey(Undestroying.UNDESTROYING_ENCHANTMENT.get())) {
 
+				// TODO: tp item
+				// disabled for OUT_OF_WORLD
 				if (source.equals(DamageSource.OUT_OF_WORLD)) {
 					callback.setReturnValue(true);
 				}

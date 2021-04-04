@@ -10,14 +10,13 @@ import net.minecraft.item.ItemStack;
  *
  */
 public class UndestroyingEnchantment extends Enchantment {
-
 	public UndestroyingEnchantment(Rarity weight, EnchantmentTarget type, EquipmentSlot[] slotTypes) {
 		super(weight, type, slotTypes);
 	}
 
 	@Override
 	public boolean isAcceptableItem(ItemStack stack) {
-		return UndestroyingFabric.isItemStackEnabledForUndestroying(stack);
+		return ModUtils.isItemEnabledForUndestroying(stack.getItem());
 	}
 
 	@Override
@@ -32,7 +31,7 @@ public class UndestroyingEnchantment extends Enchantment {
 
 	@Override
 	public int getMaxLevel() {
-		return 3;
+		return UndestroyingFabric.CONFIG.MAX_LEVEL;
 	}
 
 	@Override

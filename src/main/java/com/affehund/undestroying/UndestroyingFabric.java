@@ -6,11 +6,8 @@ import org.apache.logging.log4j.Logger;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.Enchantment.Rarity;
-import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
@@ -27,17 +24,5 @@ public class UndestroyingFabric implements ModInitializer {
 	public void onInitialize() {
 		LOGGER.debug("Loading up " + ModConstants.MOD_NAME + "!");
 		CONFIG = UndestroyingConfig.setup();
-	}
-
-	public static boolean isItemStackEnabledForUndestroying(ItemStack stack) {
-		return CONFIG.INVERTED_BLACKLIST == CONFIG.BLACKLISTED_ITEMS.contains(stack.getItem().toString());
-	}
-
-	public static boolean isItemEnabledForUndestroying(Item item) {
-		return CONFIG.INVERTED_BLACKLIST == CONFIG.BLACKLISTED_ITEMS.contains(item.toString());
-	}
-
-	public static boolean hasMinUndestroyingLevel(float level, ItemStack stack) {
-		return (EnchantmentHelper.getLevel(UNDESTROYING_ENCHANTMENT, stack) >= level);
 	}
 }

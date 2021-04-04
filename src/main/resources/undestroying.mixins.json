@@ -7,7 +7,7 @@
   	    "ItemEntityMixin"
   	],
   	"client": [
-  		"ItemMixin"
+  		"ClientPlayerInteractionManagerMixin"
   	],
   	"injectors": {
     	"defaultRequire": 1

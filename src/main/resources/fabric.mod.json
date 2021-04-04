@@ -4,7 +4,7 @@
   "version": "${version}",
 
   "name": "Undestroying (Fabric)",
-  "description": "Annoyed by loosing your stuff?",
+  "description": "Annoyed by losing your stuff?",
   "authors": [
     "Affehund"
   ],
@@ -23,8 +23,11 @@
       "com.affehund.undestroying.UndestroyingFabric"
     ],
     "client": [
+      "com.affehund.undestroying.UndestroyingFabricClient"
     ]
   },
+  
+  "accessWidener" : "undestroying.accesswidener",
   
   "mixins": [
   	"undestroying.mixins.json"

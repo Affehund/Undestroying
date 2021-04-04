@@ -2,7 +2,14 @@
   "_comment": "Translation (en_us) by Affehund",
   "enchantment.undestroying.undestroying": "Undestroying",
   "tooltip.undestroying.enchantment.undestroying": "Prevents destruction from:",
-  "tooltip.undestroying.enchantment.undestroying_1": "- cacti",
-  "tooltip.undestroying.enchantment.undestroying_2": "- fire",
-  "tooltip.undestroying.enchantment.undestroying_3": "- explosions"
+  "tooltip.undestroying.enchantment.undestroying_anvil": "- Anvil (%s)",
+  "tooltip.undestroying.enchantment.undestroying_cactus": "- Cactus (%s)",
+  "tooltip.undestroying.enchantment.undestroying_despawning": "- Despawning (%s)",
+  "tooltip.undestroying.enchantment.undestroying_explosion": "- Explosion (%s)",
+  "tooltip.undestroying.enchantment.undestroying_fire": "- Fire (%s)",
+  "tooltip.undestroying.enchantment.undestroying_lava": "- Lava (%s)",
+  "tooltip.undestroying.enchantment.undestroying_lightning_bolt": "- Lightning Bolt (%s)",
+  "tooltip.undestroying.enchantment.undestroying_tool_breaking": "- Tool Breaking (%s)",
+  "tooltip.undestroying.enchantment.undestroying_void": "- Void (%s)",
+  "tooltip.undestroying.tool_broken": "Tool broken!"
 }

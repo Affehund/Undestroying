@@ -16,7 +16,7 @@ public class UndestroyingEnchantment extends Enchantment {
 
 	@Override
 	public boolean canApplyAtEnchantingTable(ItemStack stack) {
-		return Undestroying.isItemEnabledForUndestroying(stack);
+		return ModUtils.isItemEnabledForUndestroying(stack);
 	}
 
 	@Override
@@ -26,7 +26,7 @@ public class UndestroyingEnchantment extends Enchantment {
 
 	@Override
 	public int getMaxLevel() {
-		return 3;
+		return UndestroyingConfig.COMMON_CONFIG.MAX_LEVEL.get();
 	}
 
 	@Override

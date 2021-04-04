@@ -4,19 +4,24 @@ import java.util.Random;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.lwjgl.glfw.GLFW;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.util.InputMappings;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.Enchantment.Rarity;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentType;
 import net.minecraft.inventory.EquipmentSlotType;
+import net.minecraft.item.EnchantedBookItem;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.data.LanguageProvider;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
@@ -72,37 +77,114 @@ public class Undestroying {
 	@SubscribeEvent
 	public void tooltip(final ItemTooltipEvent event) {
 		ItemStack stack = event.getItemStack();
-		if (UndestroyingConfig.COMMON_CONFIG.SHOW_TOOLTIP.get() && Undestroying.isItemEnabledForUndestroying(stack)
-				&& EnchantmentHelper.getEnchantments(stack).containsKey(Undestroying.UNDESTROYING_ENCHANTMENT.get())) {
-			if (Undestroying.hasMinUndestroyingLevel(1, stack)) {
+		Item item = stack.getItem();
+		if (UndestroyingConfig.COMMON_CONFIG.SHOW_TOOLTIP.get() && ModUtils.isItemEnabledForUndestroying(stack)
+				&& EnchantmentHelper.getEnchantments(stack).containsKey(Undestroying.UNDESTROYING_ENCHANTMENT.get())
+				&& !(item instanceof EnchantedBookItem)) {
+
+			if (stack.isDamageableItem()) {
+				if (ModUtils.toolMatches(item)) {
+					if (ModUtils.aboutToBreak(stack)) {
+						event.getToolTip().add(new TranslationTextComponent(ModConstants.TOOLTIP_TOOL_BROKEN)
+								.withStyle(TextFormatting.DARK_RED));
+					}
+				}
+			}
+
+			if (InputMappings.isKeyDown(Minecraft.getInstance().getWindow().getWindow(), GLFW.GLFW_KEY_LEFT_SHIFT)) {
 				event.getToolTip().add(new TranslationTextComponent(ModConstants.TOOLTIP_ENCHANTMENT_UNDESTROYING)
-						.withStyle(TextFormatting.GREEN));
-				event.getToolTip().add(new TranslationTextComponent(ModConstants.TOOLTIP_ENCHANTMENT_UNDESTROYING_1)
-						.withStyle(TextFormatting.GREEN));
-			}
-			if (Undestroying.hasMinUndestroyingLevel(2, stack)) {
-				event.getToolTip().add(new TranslationTextComponent(ModConstants.TOOLTIP_ENCHANTMENT_UNDESTROYING_2)
-						.withStyle(TextFormatting.GREEN));
-			}
-			if (Undestroying.hasMinUndestroyingLevel(3, stack)) {
-				event.getToolTip().add(new TranslationTextComponent(ModConstants.TOOLTIP_ENCHANTMENT_UNDESTROYING_3)
-						.withStyle(TextFormatting.GREEN));
+						.withStyle(TextFormatting.GRAY));
+
+				if (ModUtils.hasConfigLevel(UndestroyingConfig.COMMON_CONFIG.ANVIL, stack)) {
+					event.getToolTip()
+							.add(new TranslationTextComponent(ModConstants.TOOLTIP_ENCHANTMENT_UNDESTROYING_ANVIL,
+									ModUtils.intToRoman(UndestroyingConfig.COMMON_CONFIG.ANVIL.get()))
+											.withStyle(TextFormatting.GRAY));
+				}
+				if (ModUtils.hasConfigLevel(UndestroyingConfig.COMMON_CONFIG.CACTUS, stack)) {
+					event.getToolTip()
+							.add(new TranslationTextComponent(ModConstants.TOOLTIP_ENCHANTMENT_UNDESTROYING_CACTUS,
+									ModUtils.intToRoman(UndestroyingConfig.COMMON_CONFIG.CACTUS.get()))
+											.withStyle(TextFormatting.GRAY));
+				}
+				if (ModUtils.hasConfigLevel(UndestroyingConfig.COMMON_CONFIG.DESPAWNING, stack)) {
+					event.getToolTip()
+							.add(new TranslationTextComponent(ModConstants.TOOLTIP_ENCHANTMENT_UNDESTROYING_DESPAWNING,
+									ModUtils.intToRoman(UndestroyingConfig.COMMON_CONFIG.DESPAWNING.get()))
+											.withStyle(TextFormatting.GRAY));
+				}
+				if (ModUtils.hasConfigLevel(UndestroyingConfig.COMMON_CONFIG.EXPLOSION, stack)) {
+					event.getToolTip()
+							.add(new TranslationTextComponent(ModConstants.TOOLTIP_ENCHANTMENT_UNDESTROYING_EXPLOSION,
+									ModUtils.intToRoman(UndestroyingConfig.COMMON_CONFIG.EXPLOSION.get()))
+											.withStyle(TextFormatting.GRAY));
+				}
+				if (ModUtils.hasConfigLevel(UndestroyingConfig.COMMON_CONFIG.FIRE, stack)) {
+					event.getToolTip()
+							.add(new TranslationTextComponent(ModConstants.TOOLTIP_ENCHANTMENT_UNDESTROYING_FIRE,
+									ModUtils.intToRoman(UndestroyingConfig.COMMON_CONFIG.FIRE.get()))
+											.withStyle(TextFormatting.GRAY));
+				}
+				if (ModUtils.hasConfigLevel(UndestroyingConfig.COMMON_CONFIG.LAVA, stack)) {
+					event.getToolTip()
+							.add(new TranslationTextComponent(ModConstants.TOOLTIP_ENCHANTMENT_UNDESTROYING_LAVA,
+									ModUtils.intToRoman(UndestroyingConfig.COMMON_CONFIG.LAVA.get()))
+											.withStyle(TextFormatting.GRAY));
+				}
+				if (ModUtils.hasConfigLevel(UndestroyingConfig.COMMON_CONFIG.LIGHTNING_BOLT, stack)) {
+					event.getToolTip()
+							.add(new TranslationTextComponent(
+									ModConstants.TOOLTIP_ENCHANTMENT_UNDESTROYING_LIGHTNING_BOLT,
+									ModUtils.intToRoman(UndestroyingConfig.COMMON_CONFIG.LIGHTNING_BOLT.get()))
+											.withStyle(TextFormatting.GRAY));
+				}
+				if (ModUtils.hasConfigLevel(UndestroyingConfig.COMMON_CONFIG.TOOL_BREAKING, stack)
+						&& ModUtils.toolMatches(item)) {
+					event.getToolTip()
+							.add(new TranslationTextComponent(
+									ModConstants.TOOLTIP_ENCHANTMENT_UNDESTROYING_TOOL_BREAKING,
+									ModUtils.intToRoman(UndestroyingConfig.COMMON_CONFIG.TOOL_BREAKING.get()))
+											.withStyle(TextFormatting.GRAY));
+				}
+				if (ModUtils.hasConfigLevel(UndestroyingConfig.COMMON_CONFIG.VOID, stack)) {
+					event.getToolTip()
+							.add(new TranslationTextComponent(ModConstants.TOOLTIP_ENCHANTMENT_UNDESTROYING_VOID,
+									ModUtils.intToRoman(UndestroyingConfig.COMMON_CONFIG.VOID.get()))
+											.withStyle(TextFormatting.GRAY));
+				}
 			}
 		}
 	}
 
-	public static boolean isItemEnabledForUndestroying(ItemStack stack) {
-		return UndestroyingConfig.COMMON_CONFIG.INVERTED_BLACKLIST
-				.get() == UndestroyingConfig.COMMON_CONFIG.BLACKLISTED_ITEMS.get()
-						.contains(stack.getItem().getItem().getRegistryName().toString());
-	}
-
-	public static boolean hasMinUndestroyingLevel(float level, ItemStack stack) {
-		return (EnchantmentHelper.getItemEnchantmentLevel(UNDESTROYING_ENCHANTMENT.get(), stack) >= level);
+	@OnlyIn(Dist.CLIENT)
+	@SubscribeEvent
+	public void clickEvent(InputEvent.ClickInputEvent event) {
+		Minecraft mc = Minecraft.getInstance();
+		if (mc.player == null || mc.player.isCreative())
+			return;
+		ItemStack stack = mc.player.getItemInHand(event.getHand());
+		if (!ModUtils.aboutToBreak(stack))
+			return;
+		if (!ModUtils.isAntiBreakingEnabled())
+			return;
+		if (!ModUtils.hasConfigLevel(UndestroyingConfig.COMMON_CONFIG.TOOL_BREAKING, stack))
+			return;
+		if (!ModUtils.toolMatches(stack.getItem()))
+			return;
+		if (stack.isEmpty())
+			return;
+		if (!stack.isDamageableItem())
+			return;
+		else {
+			mc.gui.setOverlayMessage(
+					new TranslationTextComponent(ModConstants.TOOLTIP_TOOL_BROKEN).withStyle(TextFormatting.DARK_RED),
+					false);
+			event.setCanceled(true);
+			event.setSwingHand(false);
+		}
 	}
 
 	public static final class LanguageGen extends LanguageProvider {
-
 		public LanguageGen(DataGenerator gen, String modid, String locale) {
 			super(gen, ModConstants.MOD_ID, locale);
 		}
@@ -115,24 +197,36 @@ public class Undestroying {
 				add("_comment", "Translation (de_de) by Affehund");
 				add(Undestroying.UNDESTROYING_ENCHANTMENT.get(), "Unzerstörbarkeit");
 				add(ModConstants.TOOLTIP_ENCHANTMENT_UNDESTROYING, "Verhindert Zerstörung durch:");
-				add(ModConstants.TOOLTIP_ENCHANTMENT_UNDESTROYING_1, "- Kakteen");
-				add(ModConstants.TOOLTIP_ENCHANTMENT_UNDESTROYING_2, "- Feuer");
-				add(ModConstants.TOOLTIP_ENCHANTMENT_UNDESTROYING_3, "- Explosionen");
+				add(ModConstants.TOOLTIP_ENCHANTMENT_UNDESTROYING_ANVIL, "- Amboss (%s)");
+				add(ModConstants.TOOLTIP_ENCHANTMENT_UNDESTROYING_CACTUS, "- Kaktus (%s)");
+				add(ModConstants.TOOLTIP_ENCHANTMENT_UNDESTROYING_DESPAWNING, "- Verschwinden (%s)");
+				add(ModConstants.TOOLTIP_ENCHANTMENT_UNDESTROYING_EXPLOSION, "- Explosion (%s)");
+				add(ModConstants.TOOLTIP_ENCHANTMENT_UNDESTROYING_FIRE, "- Feuer (%s)");
+				add(ModConstants.TOOLTIP_ENCHANTMENT_UNDESTROYING_LAVA, "- Lava (%s)");
+				add(ModConstants.TOOLTIP_ENCHANTMENT_UNDESTROYING_LIGHTNING_BOLT, "- Blitz (%s)");
+				add(ModConstants.TOOLTIP_ENCHANTMENT_UNDESTROYING_TOOL_BREAKING, "- Werkzeug Brechung (%s)");
+				add(ModConstants.TOOLTIP_ENCHANTMENT_UNDESTROYING_VOID, "- Leere (%s)");
 
+				add(ModConstants.TOOLTIP_TOOL_BROKEN, "Werkzeug zerbrochen!");
 				break;
+
 			case "en_us":
 				add("_comment", "Translation (en_us) by Affehund");
 				add(Undestroying.UNDESTROYING_ENCHANTMENT.get(), "Undestroying");
 				add(ModConstants.TOOLTIP_ENCHANTMENT_UNDESTROYING, "Prevents destruction from:");
-				add(ModConstants.TOOLTIP_ENCHANTMENT_UNDESTROYING_1, "- cacti");
-				add(ModConstants.TOOLTIP_ENCHANTMENT_UNDESTROYING_2, "- fire");
-				add(ModConstants.TOOLTIP_ENCHANTMENT_UNDESTROYING_3, "- explosions");
+				add(ModConstants.TOOLTIP_ENCHANTMENT_UNDESTROYING_ANVIL, "- Anvil (%s)");
+				add(ModConstants.TOOLTIP_ENCHANTMENT_UNDESTROYING_CACTUS, "- Cactus (%s)");
+				add(ModConstants.TOOLTIP_ENCHANTMENT_UNDESTROYING_DESPAWNING, "- Despawning (%s)");
+				add(ModConstants.TOOLTIP_ENCHANTMENT_UNDESTROYING_EXPLOSION, "- Explosion (%s)");
+				add(ModConstants.TOOLTIP_ENCHANTMENT_UNDESTROYING_FIRE, "- Fire (%s)");
+				add(ModConstants.TOOLTIP_ENCHANTMENT_UNDESTROYING_LAVA, "- Lava (%s)");
+				add(ModConstants.TOOLTIP_ENCHANTMENT_UNDESTROYING_LIGHTNING_BOLT, "- Lightning Bolt (%s)");
+				add(ModConstants.TOOLTIP_ENCHANTMENT_UNDESTROYING_TOOL_BREAKING, "- Tool Breaking (%s)");
+				add(ModConstants.TOOLTIP_ENCHANTMENT_UNDESTROYING_VOID, "- Void (%s)");
+
+				add(ModConstants.TOOLTIP_TOOL_BROKEN, "Tool broken!");
 				break;
 			}
 		}
-	}
-
-	public static ResourceLocation getModResourceLocation(String path) {
-		return new ResourceLocation(ModConstants.MOD_ID, path);
 	}
 }

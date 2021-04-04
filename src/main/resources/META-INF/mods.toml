@@ -11,4 +11,4 @@ authors="Affehund" #optional
     version="${file.jarVersion}" #mandatory
     displayName="Undestroying" #mandatory
     updateJSONURL="https://raw.githubusercontent.com/Affehund/Undestroying/main/update.json" #optional
-    description='''Annoyed by loosing your stuff?'''
+    description='''Annoyed by losing your stuff?'''

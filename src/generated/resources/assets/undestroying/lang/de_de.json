@@ -2,7 +2,14 @@
   "_comment": "Translation (de_de) by Affehund",
   "enchantment.undestroying.undestroying": "Unzerst\u00F6rbarkeit",
   "tooltip.undestroying.enchantment.undestroying": "Verhindert Zerst\u00F6rung durch:",
-  "tooltip.undestroying.enchantment.undestroying_1": "- Kakteen",
-  "tooltip.undestroying.enchantment.undestroying_2": "- Feuer",
-  "tooltip.undestroying.enchantment.undestroying_3": "- Explosionen"
+  "tooltip.undestroying.enchantment.undestroying_anvil": "- Amboss (%s)",
+  "tooltip.undestroying.enchantment.undestroying_cactus": "- Kaktus (%s)",
+  "tooltip.undestroying.enchantment.undestroying_despawning": "- Verschwinden (%s)",
+  "tooltip.undestroying.enchantment.undestroying_explosion": "- Explosion (%s)",
+  "tooltip.undestroying.enchantment.undestroying_fire": "- Feuer (%s)",
+  "tooltip.undestroying.enchantment.undestroying_lava": "- Lava (%s)",
+  "tooltip.undestroying.enchantment.undestroying_lightning_bolt": "- Blitz (%s)",
+  "tooltip.undestroying.enchantment.undestroying_tool_breaking": "- Werkzeug Brechung (%s)",
+  "tooltip.undestroying.enchantment.undestroying_void": "- Leere (%s)",
+  "tooltip.undestroying.tool_broken": "Werkzeug zerbrochen!"
 }

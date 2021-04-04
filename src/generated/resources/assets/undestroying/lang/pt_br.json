@@ -1,0 +1,15 @@
+{
+  "_comment": "Translation (pt_bt) by Mikeliro",
+  "enchantment.undestroying.undestroying": "Indestrutibilidade",
+  "tooltip.undestroying.enchantment.undestroying": "Impede a destruição por:",
+  "tooltip.undestroying.enchantment.undestroying_anvil": "- Bigorna (%s)",
+  "tooltip.undestroying.enchantment.undestroying_cactus": "- Cacto (%s)",
+  "tooltip.undestroying.enchantment.undestroying_despawning": "- Desaparecimento (%s)",
+  "tooltip.undestroying.enchantment.undestroying_explosion": "- Explosão (%s)",
+  "tooltip.undestroying.enchantment.undestroying_fire": "- Fogo (%s)",
+  "tooltip.undestroying.enchantment.undestroying_lava": "- Lava (%s)",
+  "tooltip.undestroying.enchantment.undestroying_lightning_bolt": "- Relâmpago (%s)",
+  "tooltip.undestroying.enchantment.undestroying_tool_breaking": "- Quebra de Ferramenta (%s)",
+  "tooltip.undestroying.enchantment.undestroying_void": "- Vazio (%s)",
+  "tooltip.undestroying.tool_broken": "Ferramenta Quebrada!"
+}

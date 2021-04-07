@@ -24,10 +24,11 @@ import net.minecraftforge.fml.config.ModConfig;
 public class UndestroyingConfig {
 	public static class UndestroyingCommonConfig {
 		public final ConfigValue<ArrayList<String>> BLACKLISTED_ITEMS;
+		public final BooleanValue COMPATIBLE_WITH_CURSE_OF_BINDING;
 		public final BooleanValue INVERTED_BLACKLIST;
-		public final BooleanValue SHOW_TOOLTIP;
-
 		public final IntValue MAX_LEVEL;
+		public final BooleanValue SHOW_TOOLTIP;
+		public final IntValue VOID_TELEPORT_RANGE;
 
 		public final IntValue ANVIL;
 		public final IntValue CACTUS;
@@ -39,25 +40,31 @@ public class UndestroyingConfig {
 		public final IntValue TOOL_BREAKING;
 		public final IntValue VOID;
 
-		public final IntValue VOID_TELEPORT_RANGE;
-
 		public UndestroyingCommonConfig(ForgeConfigSpec.Builder builder) {
 			builder.comment("Undestroying Common Config").push("general");
 			BLACKLISTED_ITEMS = builder.comment(
 					"This add items to a blacklist, which can't be enchanted with undestroying. Example: \"minecraft:dirt\"")
 					.define("blacklisted_items", new ArrayList<String>());
+			COMPATIBLE_WITH_CURSE_OF_BINDING = builder
+					.comment("This sets whether the undestroying enchantment is compatible with curse of binding.")
+					.define("compatible_with_curse_of_binding", true);
 			INVERTED_BLACKLIST = builder.comment(
 					"This sets whether the blacklist is inverted. If true only items on the blacklist can be enchanted with undestroying.")
 					.define("inverted_blacklist", false);
+			MAX_LEVEL = builder.comment("This sets the maximum enchantment level for the undestroying enchantment.")
+					.defineInRange("max_level", 3, 1, 10);
 			SHOW_TOOLTIP = builder.comment(
 					"This sets whether a tooltip is shown to explain the levels of the undestroying enchantment.")
 					.define("show_tooltip", true);
-			MAX_LEVEL = builder.comment("This sets the maximum enchantment level for the undestroying enchantment.")
-					.defineInRange("max_level", 3, 1, 10);
+			VOID_TELEPORT_RANGE = builder.comment(
+					"This sets the maximum range an item will be teleported to the next player when the item is in the void. If there's no player near by the item will float at y=0.")
+					.defineInRange("void_teleport_range", 128, 0, 2048);
+
 			builder.pop();
 
-			builder.push("enchantment_levels").comment(
-					"Here you can set the required enchantment levels for the undestroying enchantment. If you set a value to 0, it will be disabled and won't work at all.");
+			builder.comment(
+					"Here you can set the required enchantment levels for the undestroying enchantment. If you set a value to 0, it will be disabled and won't work at all.")
+					.push("enchantment_levels");
 
 			ANVIL = builder.comment("This sets the required enchantment level to prevent anvil destruction.")
 					.defineInRange("anvil", 1, 0, 10);
@@ -78,10 +85,6 @@ public class UndestroyingConfig {
 					.defineInRange("tool_breaking", 3, 0, 10);
 			VOID = builder.comment("This sets the required enchantment level to prevent void destruction.")
 					.defineInRange("void", 3, 0, 10);
-
-			VOID_TELEPORT_RANGE = builder.comment(
-					"This sets the maximum range an item will be teleported to the next player. If there's no player near by the item will be float at y=0.")
-					.defineInRange("void_teleport_range", 128, 0, 2048);
 
 			builder.pop();
 		}

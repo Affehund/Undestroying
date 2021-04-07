@@ -24,9 +24,11 @@ import net.minecraft.util.math.vector.Vector3d;
  *
  */
 @Mixin(ItemEntity.class)
-public class ItemEntityMixin {
+public abstract class ItemEntityMixin {
+	@Shadow
+	public abstract ItemStack getItem();
 
-	@Inject(at = @At("TAIL"), method = "tick()V")
+	@Inject(at = @At("HEAD"), method = "tick")
 	private void tick(CallbackInfo callbackInfo) {
 		ItemStack stack = this.getItem();
 		if (ModUtils.isItemEnabledForUndestroying(stack)) {
@@ -57,7 +59,6 @@ public class ItemEntityMixin {
 
 	@Inject(at = @At("HEAD"), method = "hurt(Lnet/minecraft/util/DamageSource;F)Z", cancellable = true)
 	private void hurt(DamageSource source, float amount, CallbackInfoReturnable<Boolean> callback) {
-
 		ItemStack stack = this.getItem();
 		if (ModUtils.isItemEnabledForUndestroying(stack)) {
 			if (EnchantmentHelper.getEnchantments(stack).containsKey(Undestroying.UNDESTROYING_ENCHANTMENT.get())) {
@@ -95,10 +96,5 @@ public class ItemEntityMixin {
 				}
 			}
 		}
-	}
-
-	@Shadow
-	public ItemStack getItem() {
-		throw new IllegalStateException("Couldn't shadow getItem()");
 	}
 }

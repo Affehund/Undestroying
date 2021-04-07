@@ -43,7 +43,7 @@ public class UndestroyingConfig {
 		public UndestroyingCommonConfig(ForgeConfigSpec.Builder builder) {
 			builder.comment("Undestroying Common Config").push("general");
 			BLACKLISTED_ITEMS = builder.comment(
-					"This add items to a blacklist, which can't be enchanted with undestroying. Example: \"minecraft:dirt\"")
+					"This adds items to a blacklist, which can't be enchanted with undestroying. Example: \"minecraft:dirt\"")
 					.define("blacklisted_items", new ArrayList<String>());
 			COMPATIBLE_WITH_CURSE_OF_BINDING = builder
 					.comment("This sets whether the undestroying enchantment is compatible with curse of binding.")

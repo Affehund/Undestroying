@@ -2,6 +2,7 @@ package com.affehund.undestroying;
 
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
+import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ItemStack;
 
@@ -17,16 +18,6 @@ public class UndestroyingEnchantment extends Enchantment {
 	@Override
 	public boolean isAcceptableItem(ItemStack stack) {
 		return ModUtils.isItemEnabledForUndestroying(stack.getItem());
-	}
-
-	@Override
-	public boolean isAvailableForEnchantedBookOffer() {
-		return true;
-	}
-
-	@Override
-	public boolean isAvailableForRandomSelection() {
-		return true;
 	}
 
 	@Override
@@ -46,5 +37,11 @@ public class UndestroyingEnchantment extends Enchantment {
 
 	public boolean isTreasureEnchantment() {
 		return true;
+	}
+
+	@Override
+	protected boolean canAccept(Enchantment other) {
+		return super.canAccept(other)
+				&& UndestroyingFabric.CONFIG.COMPATIBLE_WITH_CURSE_OF_BINDING == (other == Enchantments.BINDING_CURSE);
 	}
 }

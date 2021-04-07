@@ -41,7 +41,7 @@ public class ModUtils {
 	}
 
 	public static boolean aboutToBreak(ItemStack stack) {
-		return stack.getMaxDamage() > 2 && stack.getDamage() >= stack.getMaxDamage() - 2;
+		return stack.getMaxDamage() > 3 && stack.getDamage() >= stack.getMaxDamage() - 3;
 	}
 
 	public static boolean cancleItemUsing() {

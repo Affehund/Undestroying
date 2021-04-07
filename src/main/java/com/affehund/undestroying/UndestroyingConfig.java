@@ -23,9 +23,11 @@ public class UndestroyingConfig {
 			FabricLoader.getInstance().getConfigDir() + ModConstants.COMMON_CONFIG_NAME);
 
 	public ArrayList<String> BLACKLISTED_ITEMS;
+	public Boolean COMPATIBLE_WITH_CURSE_OF_BINDING;
 	public Boolean INVERTED_BLACKLIST;
-	public Boolean SHOW_TOOLTIP;
 	public Integer MAX_LEVEL;
+	public Boolean SHOW_TOOLTIP;
+	public Integer VOID_TELEPORT_RANGE;
 
 	public Integer ANVIL;
 	public Integer CACTUS;
@@ -37,13 +39,13 @@ public class UndestroyingConfig {
 	public Integer TOOL_BREAKING;
 	public Integer VOID;
 
-	public Integer VOID_TELEPORT_RANGE;
-
 	public UndestroyingConfig() {
 		this.BLACKLISTED_ITEMS = new ArrayList<String>();
+		this.COMPATIBLE_WITH_CURSE_OF_BINDING = true;
 		this.INVERTED_BLACKLIST = false;
-		this.SHOW_TOOLTIP = true;
 		this.MAX_LEVEL = 3;
+		this.SHOW_TOOLTIP = true;
+		this.VOID_TELEPORT_RANGE = 128;
 
 		this.ANVIL = 1;
 		this.CACTUS = 1;
@@ -54,15 +56,15 @@ public class UndestroyingConfig {
 		this.LIGHTNING_BOLT = 2;
 		this.TOOL_BREAKING = 3;
 		this.VOID = 3;
-
-		this.VOID_TELEPORT_RANGE = 128;
 	}
 
 	public UndestroyingConfig(UndestroyingConfig config) {
 		this.BLACKLISTED_ITEMS = config.BLACKLISTED_ITEMS;
+		this.COMPATIBLE_WITH_CURSE_OF_BINDING = config.COMPATIBLE_WITH_CURSE_OF_BINDING;
 		this.INVERTED_BLACKLIST = config.INVERTED_BLACKLIST;
-		this.SHOW_TOOLTIP = config.SHOW_TOOLTIP;
 		this.MAX_LEVEL = config.MAX_LEVEL;
+		this.SHOW_TOOLTIP = config.SHOW_TOOLTIP;
+		this.VOID_TELEPORT_RANGE = config.VOID_TELEPORT_RANGE;
 
 		this.ANVIL = config.ANVIL;
 		this.CACTUS = config.CACTUS;
@@ -73,8 +75,6 @@ public class UndestroyingConfig {
 		this.LIGHTNING_BOLT = config.LIGHTNING_BOLT;
 		this.TOOL_BREAKING = config.TOOL_BREAKING;
 		this.VOID = config.VOID;
-
-		this.VOID_TELEPORT_RANGE = config.VOID_TELEPORT_RANGE;
 	}
 
 	public static UndestroyingConfig setup() {

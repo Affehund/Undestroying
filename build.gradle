@@ -41,9 +41,8 @@ minecraft {
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
             property 'forge.logging.console.level', 'debug'
             
-            jvmArg "-Dmixin.env.disableRefMap=true"
         	arg "-mixin.config=undestroying.mixins.json"
-
+        	
             mods {
                 "${mod_id}" {
                     source sourceSets.main
@@ -56,7 +55,6 @@ minecraft {
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
             property 'forge.logging.console.level', 'debug'
 
-            jvmArg "-Dmixin.env.disableRefMap=true"
         	arg "-mixin.config=undestroying.mixins.json"
         	
             mods {
@@ -84,18 +82,18 @@ minecraft {
 
 dependencies {
     minecraft "net.minecraftforge:forge:${mc_version}-${forge_version}"
+    annotationProcessor 'org.spongepowered:mixin:0.8.2:processor'
 }
 
 repositories {
 }
 
-// Example for how to get properties into the manifest for reading by the runtime..
 jar {
     manifest {
         attributes([
         	"Specification-Title": project.mod_id,
             "Specification-Vendor": "Affehund",
-            "Specification-Version": "1.0", // We are version 1 of the modlauncher specification
+            "Specification-Version": "1.0",
             "Implementation-Title": project.name,
             "Implementation-Version": "${version}",
             "Implementation-Vendor" :"Affehund",
@@ -106,7 +104,6 @@ jar {
 }
 
 jar.finalizedBy('reobfJar') 
-
 
 publishing {
     publications {

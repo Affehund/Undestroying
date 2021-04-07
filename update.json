@@ -2,10 +2,11 @@
 	"homepage" : "https://www.curseforge.com/minecraft/mc-mods/undestroying",
   	"1.16.5" : {
     	"undestroying-1.16.5-1.0.0" : "Initial release",
-    	"undestroying-1.16.5-1.1.0" : "Additions:\nmore types to saves your items from destruction (anvil, despawning, lightning bolt, tool breaking, void)\nconfig to set the minimum required enchantment level and to disable specific types\nbug fixes and improvements"
+    	"undestroying-1.16.5-1.1.0" : "Additions:\nmore types to saves your items from destruction (anvil, despawning, lightning bolt, tool breaking, void)\nconfig to set the minimum required enchantment level and to disable specific types\nbug fixes and improvements",
+    	"undestroying-1.16.5-1.1.1" : "Additions:\n- config option for whether the undestroying enchantment is compatible with curse of binding\n- translation for brazilian portuguese (pt_br) - thanks to Mikeliro\nChanges:\n- set tool breaking at durability 3 to prevent some breaking\nFixes:\n- Mixin startup crash (closes #2)\n\nDon't forget to update your config!"
     },
   	"promos" : {
-    	"1.16.5-latest" : "undestroying-1.16.5-1.1.0",
-    	"1.16.5-recommended" : "undestroying-1.16.5-1.1.0"
+    	"1.16.5-latest" : "undestroying-1.16.5-1.1.1",
+    	"1.16.5-recommended" : "undestroying-1.16.5-1.1.1"
   	}
 }

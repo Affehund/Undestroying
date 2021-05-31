@@ -40,8 +40,14 @@ public class UndestroyingEnchantment extends Enchantment {
 	}
 
 	@Override
+	public boolean isTradeable() {
+		return true;
+	}
+
+	@Override
 	protected boolean checkCompatibility(Enchantment other) {
-		return super.checkCompatibility(other) && UndestroyingConfig.COMMON_CONFIG.COMPATIBLE_WITH_CURSE_OF_BINDING
-				.get() == (other == Enchantments.BINDING_CURSE);
+		return other == Enchantments.BINDING_CURSE
+				&& !UndestroyingConfig.COMMON_CONFIG.COMPATIBLE_WITH_CURSE_OF_BINDING.get() ? false
+						: super.checkCompatibility(other);
 	}
 }

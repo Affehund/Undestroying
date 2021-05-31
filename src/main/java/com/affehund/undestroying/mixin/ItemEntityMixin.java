@@ -39,17 +39,18 @@ public abstract class ItemEntityMixin {
 				}
 				if (ModUtils.hasConfigLevel(UndestroyingConfig.COMMON_CONFIG.VOID, stack)) {
 					BlockPos itemPos = new BlockPos(entity.position());
+					// TODO: give nbt data to item to prevent multiple teleporting and to teleport
+					// the item to near players
 					if (itemPos.getY() < -32) {
+						entity.setNoGravity(true);
 						entity.setDeltaMovement(0, 0, 0);
 						entity.teleportTo(itemPos.getX(), 0.0D, itemPos.getZ());
+						entity.setGlowing(true);
 						PlayerEntity nearPlayer = entity.level.getNearestPlayer(entity,
 								UndestroyingConfig.COMMON_CONFIG.VOID_TELEPORT_RANGE.get());
 						if (nearPlayer != null) {
 							Vector3d playerPos = nearPlayer.position();
 							entity.teleportTo(playerPos.x, playerPos.y, playerPos.z);
-						} else {
-							entity.setNoGravity(true);
-							entity.teleportTo(itemPos.getX(), 0.0D, itemPos.getZ());
 						}
 					}
 				}

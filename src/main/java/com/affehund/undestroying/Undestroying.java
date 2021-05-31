@@ -14,6 +14,7 @@ import net.minecraft.enchantment.Enchantment.Rarity;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentType;
 import net.minecraft.inventory.EquipmentSlotType;
+import net.minecraft.item.BookItem;
 import net.minecraft.item.EnchantedBookItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -61,9 +62,12 @@ public class Undestroying {
 	public static final DeferredRegister<Enchantment> ENCHANTMENTS = DeferredRegister
 			.create(ForgeRegistries.ENCHANTMENTS, ModConstants.MOD_ID);
 
+	public static final EnchantmentType ALL_ITEMS = EnchantmentType.create(ModConstants.ALL_ITEMS_STRING,
+			(Item item) -> item instanceof BookItem || ModUtils.isItemEnabledForUndestroying(new ItemStack(item)));
+
 	public static final RegistryObject<Enchantment> UNDESTROYING_ENCHANTMENT = ENCHANTMENTS.register(
 			ModConstants.MOD_ID,
-			() -> new UndestroyingEnchantment(Rarity.RARE, EnchantmentType.BREAKABLE, EquipmentSlotType.values()));
+			() -> new UndestroyingEnchantment(Rarity.UNCOMMON, ALL_ITEMS, EquipmentSlotType.values()));
 
 	private void gatherData(final GatherDataEvent event) {
 		DataGenerator gen = event.getGenerator();

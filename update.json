@@ -3,10 +3,12 @@
   	"1.16.5" : {
     	"undestroying-1.16.5-1.0.0" : "Initial release",
     	"undestroying-1.16.5-1.1.0" : "Additions:\nmore types to saves your items from destruction (anvil, despawning, lightning bolt, tool breaking, void)\nconfig to set the minimum required enchantment level and to disable specific types\nbug fixes and improvements",
-    	"undestroying-1.16.5-1.1.1" : "Additions:\n- config option for whether the undestroying enchantment is compatible with curse of binding\n- translation for brazilian portuguese (pt_br) - thanks to Mikeliro\nChanges:\n- set tool breaking at durability 3 to prevent some breaking\nFixes:\n- Mixin startup crash (closes #2)\n\nDon't forget to update your config!"
+    	"undestroying-1.16.5-1.1.1" : "Additions:\n- config option for whether the undestroying enchantment is compatible with curse of binding\n- translation for brazilian portuguese (pt_br) - thanks to Mikeliro\nChanges:\n- set tool breaking at durability 3 to prevent some breaking\nFixes:\n- Mixin startup crash (closes #2)\n\nDon't forget to update your config!",
+    	"undestroying-1.16.5-1.2.0" : "Changes:\n- items enchanted with undestroying will glow in the void\n\n- rarity for undestroying enchantment is now uncommon instead of rare\nFixes:\n- undestroying enchantment not obtainable\n- undestroying enchantment incompatible with other enchantments\n\nSmall tweaks"
+    	
     },
   	"promos" : {
-    	"1.16.5-latest" : "undestroying-1.16.5-1.1.1",
-    	"1.16.5-recommended" : "undestroying-1.16.5-1.1.1"
+    	"1.16.5-latest" : "undestroying-1.16.5-1.2.0",
+    	"1.16.5-recommended" : "undestroying-1.16.5-1.2.0"
   	}
 }

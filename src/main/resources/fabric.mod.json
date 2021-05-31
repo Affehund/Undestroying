@@ -24,6 +24,9 @@
     ],
     "client": [
       "com.affehund.undestroying.UndestroyingFabricClient"
+    ],
+    "mm:early_risers": [
+      "com.affehund.undestroying.asm.EarlyRiser"
     ]
   },
   

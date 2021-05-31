@@ -40,8 +40,14 @@ public class UndestroyingEnchantment extends Enchantment {
 	}
 
 	@Override
+	public boolean isAvailableForEnchantedBookOffer() {
+		return true;
+	}
+
+	@Override
 	protected boolean canAccept(Enchantment other) {
-		return super.canAccept(other)
-				&& UndestroyingFabric.CONFIG.COMPATIBLE_WITH_CURSE_OF_BINDING == (other == Enchantments.BINDING_CURSE);
+		return other == Enchantments.BINDING_CURSE && !UndestroyingFabric.CONFIG.COMPATIBLE_WITH_CURSE_OF_BINDING
+				? false
+				: super.canAccept(other);
 	}
 }

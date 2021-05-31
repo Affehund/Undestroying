@@ -37,16 +37,15 @@ public class ItemEntityMixin {
 				if (ModUtils.hasConfigLevel(UndestroyingFabric.CONFIG.VOID, stack)) {
 					BlockPos itemPos = new BlockPos(entity.getPos());
 					if (itemPos.getY() < -32) {
+						entity.setNoGravity(true);
 						entity.setVelocity(0, 0, 0);
 						entity.teleport(itemPos.getX(), 0.0D, itemPos.getZ());
+						entity.setGlowing(true);
 						PlayerEntity nearPlayer = entity.world.getClosestPlayer(entity,
 								UndestroyingFabric.CONFIG.VOID_TELEPORT_RANGE);
 						if (nearPlayer != null) {
 							Vec3d playerPos = nearPlayer.getPos();
 							entity.teleport(playerPos.x, playerPos.y, playerPos.z);
-						} else {
-							entity.setNoGravity(true);
-							entity.teleport(itemPos.getX(), 0.0D, itemPos.getZ());
 						}
 					}
 				}

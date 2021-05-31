@@ -5,6 +5,8 @@ public final class ModConstants {
 	public static final String MOD_NAME = "Undestroying";
 	public static final String COMMON_CONFIG_NAME = "/" + MOD_ID + ".json";
 
+	public static final String ALL_ITEMS_STRING = "ALL_ITEMS";
+
 	public static final String TOOLTIP_ENCHANTMENT_UNDESTROYING = "tooltip." + MOD_ID + ".enchantment.undestroying";
 	public static final String TOOLTIP_ENCHANTMENT_UNDESTROYING_ANVIL = "tooltip." + MOD_ID
 			+ ".enchantment.undestroying_anvil";

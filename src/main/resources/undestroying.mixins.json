@@ -4,7 +4,8 @@
   	"package": "com.affehund.undestroying.mixin",
   	"compatibilityLevel": "JAVA_8",
   	"mixins": [
-  	    "ItemEntityMixin"
+  	    "ItemEntityMixin",
+  	    "EnchantmentTargetMixin"
   	],
   	"client": [
   		"ClientPlayerInteractionManagerMixin"
